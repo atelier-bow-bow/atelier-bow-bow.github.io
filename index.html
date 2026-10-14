@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bow Bow Photographs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout: full-bleed photo hero, then alternating washi / sand bands; photos lead, text sits beside them, never on top. Single natural-light look by choice. */
+:root{
+  --washi:#f3f0ea;      /* 生成り */
+  --sand:#e6e2d4;       /* 砂・石 */
+  --ink:#1d2124;        /* 墨 */
+  --ink-soft:#3d4346;
+  --stone:#7c7f80;      /* captions */
+  --moss:#6b7a6f;       /* labels */
+  --forest:#4a5a4c;     /* buttons */
+  --line:#c9c4ba;
+  --f-display:'Cormorant Garamond','Times New Roman',serif;
+  --f-body:'Noto Sans JP','Hiragino Kaku Gothic ProN','Yu Gothic',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--washi);color:var(--ink);font-family:var(--f-body);font-weight:300;line-height:1.9;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;width:100%;height:100%;object-fit:cover}
+a{color:inherit}
+a:focus-visible{outline:2px solid var(--forest);outline-offset:4px}
+.wrap{max-width:1296px;margin:0 auto;padding-inline:clamp(16px,5vw,72px)}
+.band{padding-block:clamp(64px,9vw,120px)}
+.band.sand{background:var(--sand)}
+.label{font-family:var(--f-display);font-size:.85rem;letter-spacing:.4em;text-transform:uppercase;color:var(--moss);margin:0}
+.h-en{font-family:var(--f-display);font-style:italic;font-weight:400;font-size:clamp(2.6rem,6vw,4.5rem);line-height:1;margin:.3em 0 0;display:flex;align-items:baseline;gap:.6em;flex-wrap:wrap}
+.h-en small{font-family:var(--f-body);font-style:normal;font-size:1.1rem;letter-spacing:.5em;color:var(--stone);font-weight:400}
+.cap{font-size:.75rem;letter-spacing:.12em;color:var(--stone);margin:1.4em 0 0}
+.btn{display:inline-block;background:var(--forest);color:var(--washi);text-decoration:none;font-family:var(--f-display);font-size:.9rem;letter-spacing:.35em;text-transform:uppercase;padding:1.1em 2.2em;transition:background .2s}
+.btn:hover{background:#3b4a3d}
+.handle{font-family:var(--f-display);font-size:1.4rem;letter-spacing:.06em;color:var(--ink);text-decoration:none}
+.handle:hover{text-decoration:underline;text-underline-offset:6px}
+
+/* hero */
+.hero{position:relative;color:#fff;min-height:clamp(520px,62vw,900px);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;background:var(--ink)}
+.hero>img{position:absolute;inset:0}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,16,.5) 0%,rgba(10,14,16,0) 28%,rgba(10,14,16,0) 50%,rgba(10,14,16,.68) 100%)}
+.hero>*{position:relative;z-index:1}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding-block:28px}
+.nav .brand{font-family:var(--f-display);letter-spacing:.4em;text-transform:uppercase;text-decoration:none;font-size:.95rem}
+.nav ul{display:flex;gap:clamp(14px,3vw,36px);list-style:none;margin:0;padding:0;flex-wrap:wrap;justify-content:flex-end}
+.nav ul a{font-family:var(--f-display);text-transform:uppercase;letter-spacing:.3em;font-size:.8rem;text-decoration:none}
+.nav ul a:hover{text-decoration:underline;text-underline-offset:6px}
+.hero-copy{text-align:right;padding-block:0 clamp(40px,6vw,80px)}
+.hero-copy h1{font-family:var(--f-display);font-weight:400;font-size:clamp(4rem,11vw,8.5rem);line-height:1;margin:0;letter-spacing:.03em}
+.hero-copy p{margin:.6em 0 0;font-size:clamp(1.05rem,2vw,1.6rem);letter-spacing:.4em;font-weight:400}
+.hero-copy .sub{font-family:var(--f-display);font-size:.8rem;letter-spacing:.45em;text-transform:uppercase;opacity:.85;margin-top:1.2em}
+
+/* statement */
+.statement{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(32px,6vw,96px);align-items:center}
+.statement h2{font-weight:500;font-size:clamp(1.7rem,3vw,2.5rem);line-height:1.6;letter-spacing:.08em;margin:.9em 0 0;text-wrap:balance}
+.statement .body{font-size:1rem;line-height:2.2;letter-spacing:.06em;color:var(--ink-soft);margin:1.8em 0 2.4em;max-width:30em}
+.ig-line{font-family:var(--f-display);font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:6px}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.pair figure{margin:0;aspect-ratio:3/6.2}
+
+/* works */
+.grid{display:grid;gap:clamp(14px,2.5vw,36px);margin-top:clamp(32px,5vw,64px)}
+.river{grid-template-columns:2.15fr 1fr}
+.river .wide{grid-column:1/-1;display:grid;grid-template-columns:1fr 2fr;gap:inherit}
+.river figure{margin:0}
+.river .a{aspect-ratio:3/2}
+.river .b{aspect-ratio:auto}
+.river .wide figure{aspect-ratio:2/1}
+.river .wide figure:last-child{aspect-ratio:4/1}
+.forest{grid-template-columns:1fr 1.62fr;align-items:start}
+.forest figure{margin:0}
+.forest .tall{aspect-ratio:2/3}
+.forest .land{aspect-ratio:3/2}
+.forest .note{font-size:1.05rem;line-height:2.1;letter-spacing:.08em;color:var(--ink-soft);margin:1.6em 0 0}
+.sea{grid-template-columns:1.62fr 1fr}
+.sea figure{margin:0}
+.sea .land{aspect-ratio:3/2}
+.sea .tall{grid-row:span 2;aspect-ratio:auto}
+.sea .duo{display:grid;grid-template-columns:1fr 1fr;gap:inherit}
+.sea .duo figure{aspect-ratio:9/4}
+
+/* news */
+.news{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:clamp(32px,6vw,96px);align-items:center}
+.news h2,.contact h2{font-weight:500;font-size:clamp(1.6rem,2.8vw,2.2rem);line-height:1.6;letter-spacing:.1em;margin:.8em 0 0}
+.news p{color:var(--ink-soft);letter-spacing:.06em;line-height:2.1;margin:1.4em 0 2.2em}
+.cta{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.qr{width:clamp(180px,22vw,270px);background:#fff;border-radius:14px;overflow:hidden}
+.qr img{height:auto;object-fit:contain}
+.qr-note{font-size:.75rem;color:var(--stone);text-align:center;margin:.8em 0 0;letter-spacing:.1em}
+
+/* contact */
+.contact{text-align:center}
+.contact p{color:var(--ink-soft);letter-spacing:.08em;margin:1.2em 0 2.2em}
+.contact .cta{justify-content:center;flex-direction:column;gap:22px}
+footer{border-top:1px solid var(--line);margin-top:clamp(64px,8vw,100px);padding-block:28px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-family:var(--f-display);font-size:.75rem;letter-spacing:.4em;text-transform:uppercase;color:var(--stone)}
+
+@media (max-width:820px){
+  .statement,.news{grid-template-columns:1fr}
+  .river,.forest,.sea{grid-template-columns:1fr}
+  .river .wide{grid-template-columns:1fr}
+  .river .wide figure,.river .wide figure:last-child{aspect-ratio:3/2}
+  .river .b{aspect-ratio:3/4}
+  .sea .tall{grid-row:auto;aspect-ratio:3/4}
+  .sea .duo{grid-template-columns:1fr}
+  .sea .duo figure{aspect-ratio:3/2}
+  .news .qr-col{justify-self:start}
+  .hero-copy p{letter-spacing:.25em}
+}
+@media (max-width:480px){
+  .nav{flex-direction:column;align-items:flex-start}
+  .nav ul{justify-content:flex-start}
+  .pair figure{aspect-ratio:3/5}
+}
+</style>
+</head>
+<body>
+
+<header class="hero" id="top">
+  <img src="img/dsc00624.jpg" alt="四万十川をゆく屋形船と、川岸の深い緑">
+  <nav class="nav wrap" aria-label="メインメニュー">
+    <a class="brand" href="#top">Bow Bow</a>
+    <ul>
+      <li><a href="#works">Works</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#news">News</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <div class="hero-copy wrap">
+    <h1>Bow Bow</h1>
+    <p>川と森と海のあいだで</p>
+    <p class="sub">Photographer — Shimanto, Kochi</p>
+  </div>
+</header>
+
+<main>
+  <section class="band" id="about">
+    <div class="wrap statement">
+      <div>
+        <p class="label">Statement</p>
+        <h2>最後の清流と呼ばれる<br>この川の、ありふれた<br>一日を撮っています。</h2>
+        <p class="body">高知県四万十市を拠点に、川の流れ、森の湿度、海の光、そこに生きる人の手しごとを記録しています。霧の朝も、雪の日も、夏の水辺も。季節がめぐるたびに表情を変える四万十の自然を、静かな距離感で切り取ることがテーマです。</p>
+        <a class="ig-line" href="https://www.instagram.com/atelier_bow_bow/" target="_blank" rel="noopener">Instagram — @atelier_bow_bow</a>
+      </div>
+      <div class="pair">
+        <figure><img src="img/dsc09701.jpg" alt="苔むした杉の幹" loading="lazy"></figure>
+        <figure><img src="img/5k1a9654.jpg" alt="碧く澄んだ淵" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="band sand" id="works">
+    <div class="wrap">
+      <p class="label">Works 01</p>
+      <h2 class="h-en">River <small>川</small></h2>
+      <div class="grid river">
+        <figure class="a"><img src="img/dsc00218.jpg" alt="川に入って網を打つ川漁師" loading="lazy"></figure>
+        <figure class="b"><img src="img/img_1979.jpg" alt="霧に包まれた朝の川" loading="lazy"></figure>
+        <div class="wide">
+          <figure><img src="img/dsc01862.jpg" alt="空を映す水鏡" loading="lazy"></figure>
+          <figure><img src="img/5k1a9789.jpg" alt="雪の日の川の流れ" loading="lazy"></figure>
+        </div>
+      </div>
+      <p class="cap">四万十川の川漁師 ／ 霧の朝 ／ 水鏡 ／ 雪の日の流れ</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <p class="label">Works 02</p>
+      <h2 class="h-en">Forest <small>森</small></h2>
+      <div class="grid forest">
+        <figure class="tall"><img src="img/dsc00032.jpg" alt="緑の中を落ちる滝" loading="lazy"></figure>
+        <div>
+          <figure class="land"><img src="img/dsc02938.jpg" alt="見上げた森の天蓋" loading="lazy"></figure>
+          <p class="note">見上げれば、葉の天蓋。耳をすませば、滝の音。<br>川を育てているのは、この深い森です。</p>
+          <p class="cap">滝 ／ 森の天蓋</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="band sand">
+    <div class="wrap">
+      <p class="label">Works 03</p>
+      <h2 class="h-en">Sea &amp; Light <small>海と光</small></h2>
+      <div class="grid sea">
+        <figure class="land"><img src="img/dsc09100.jpg" alt="海に突き出た岬の岩肌" loading="lazy"></figure>
+        <figure class="tall"><img src="img/dsc09680.jpg" alt="海を望む高台の鳥居" loading="lazy"></figure>
+        <div class="duo">
+          <figure><img src="img/5k1a9485.jpg" alt="海に沈む夕日" loading="lazy"></figure>
+          <figure><img src="img/dsc02153.jpg" alt="山あいの朝の湖面" loading="lazy"></figure>
+        </div>
+      </div>
+      <p class="cap">岬の岩肌 ／ 海を望む鳥居 ／ 夕日 ／ 朝の湖面</p>
+    </div>
+  </section>
+
+  <section class="band" id="news">
+    <div class="wrap news">
+      <div>
+        <p class="label">News</p>
+        <h2>写真展・写真集のお知らせ</h2>
+        <p>写真展の開催や写真集の発売などのお知らせは、インスタグラムで発信していきます。フォローしてお待ちください。</p>
+        <div class="cta">
+          <a class="btn" href="https://www.instagram.com/atelier_bow_bow/" target="_blank" rel="noopener">Follow on Instagram</a>
+          <a class="handle" href="https://www.instagram.com/atelier_bow_bow/" target="_blank" rel="noopener">@atelier_bow_bow</a>
+        </div>
+      </div>
+      <div class="qr-col">
+        <div class="qr"><img src="img/qr.png" alt="インスタグラム atelier_bow_bow のQRコード"></div>
+        <p class="qr-note">スマホで読み取るとインスタグラムが開きます</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="band sand" id="contact">
+    <div class="wrap contact">
+      <p class="label">Contact</p>
+      <h2>撮影のご依頼・ご相談</h2>
+      <p>インスタグラムのDMから、お気軽にご連絡ください。</p>
+      <div class="cta">
+        <a class="btn" href="https://ig.me/m/atelier_bow_bow" target="_blank" rel="noopener">DM on Instagram</a>
+        <a class="handle" href="https://www.instagram.com/atelier_bow_bow/" target="_blank" rel="noopener">@atelier_bow_bow</a>
+      </div>
+      <footer>
+        <span>© Bow Bow</span>
+        <span>Shimanto, Kochi, Japan</span>
+      </footer>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>
